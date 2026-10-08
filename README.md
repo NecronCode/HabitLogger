@@ -319,7 +319,7 @@ db.EjecutarNonQuery(SQL, new() { ["@cantidad"] = 35, ["@id"] = 2 });
 
 Con parámetros, la BD recibe **la consulta y los datos por separado** y nunca interpreta los datos como SQL. Además, evita problemas de comillas (un hábito llamado `L'Hospitalet` no rompe nada) y de formato de números y fechas.
 
-**`null` y `DBNull`.** En la BD «sin valor» es `NULL`, que en .NET se representa con `DBNull.Value`, no con `null`. `DataBaseManager` hace la conversión (`p.Value ?? DBNull.Value`) y, al leer, una columna vacía llega como `DBNull.Value`. En este proyecto ninguna columna admite `NULL`, pero la clase del profesor es genérica y lo contempla.
+**`null` y `DBNull`.** En la BD «sin valor» es `NULL`, que en .NET se representa con `DBNull.Value`, no con `null`. `DataBaseManager` hace la conversión (`p.Value ?? DBNull.Value`) y, al leer, una columna vacía llega como `DBNull.Value`. En este proyecto ninguna columna admite `NULL`.
 
 **`SELECT last_insert_rowid()`.** Tras un `INSERT`, esta función devuelve el Id que la BD acaba de asignar. Se ejecuta **en la misma sentencia** (`INSERT ...; SELECT last_insert_rowid();`) porque el valor es **propio de cada conexión**: como `DataBaseManager` cierra la conexión tras cada llamada, hacerlo en dos llamadas separadas no sería fiable.
 

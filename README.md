@@ -694,22 +694,7 @@ Para repararlo: `DROP TABLE Habitos;` y volver a arrancar la aplicación, que re
 
 ---
 
-## 9. Limitaciones conocidas y posibles mejoras
-
-- **Pruebas unitarias con xUnit.** Para probar `HabitRepository` sin tocar el disco se puede usar una BD en memoria. Ojo: con `Data Source=:memory:` cada conexión es una BD **distinta**, y `DataBaseManager` cierra la conexión tras cada llamada, así que los datos desaparecerían. Habría que usar una BD en memoria **compartida** (`Mode=Memory;Cache=Shared`) y mantener una conexión abierta durante la prueba.
-- **Interfaces** (`IHabitRepository`, `IVista`): permitirían sustituir piezas en las pruebas y preparar la GUI.
-- **Transacciones**: si una operación necesitara varias sentencias que deben cumplirse todas o ninguna, habría que usar `BeginTransaction`. Hoy cada operación es una sola sentencia y no hace falta.
-- **Resumen y filtros**: ver los registros de una fecha o el total por hábito (`GROUP BY` / `SUM` en SQL).
-- **Tabla de hábitos separada** con clave foránea (`HabitoId`), para evitar escribir mal el nombre del mismo hábito («Agua» / «agua»).
-- **`Ctrl+C` controlado** con `Console.CancelKeyPress`, para cerrar anotando «Aplicación cerrada» en el log.
-- **Orden del menú garantizado** cambiando `Dictionary` por `SortedDictionary` (§6.7).
-- **Librerías de *logging*** (`Microsoft.Extensions.Logging`, Serilog): niveles (Info, Warning, Error), rotación de ficheros y varios destinos a la vez.
-- **Entity Framework Core**: sustituiría a `HabitRepository` + `DataBaseManager` y haría el mapeo de filas a objetos solo.
-- **La GUI**: `Data/`, `Logging/` y `Models/` no dependen de la consola y se reutilizan; se reescribe `UI/`. Una GUI no puede usar `Console.ReadLine`, que bloquea, así que la validación de `ConsoleInput` pasaría a eventos de formulario.
-
----
-
-## 10. Glosario (términos nuevos)
+## 9. Glosario (términos nuevos)
 
 | Término | Significado |
 |---|---|

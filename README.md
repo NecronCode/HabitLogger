@@ -38,7 +38,7 @@ Este README continúa los apuntes de **MathGame** (Caso Práctico 1). **Lo que y
 
 ## 2. Cómo ejecutarlo
 
-**Requisitos:** SDK de **.NET 10** (el mismo `TargetFramework` que el ejemplo del profesor). La primera vez, `dotnet` descarga solo el paquete NuGet `Microsoft.Data.Sqlite` (§6.2); hace falta conexión a internet en ese momento.
+**Requisitos:** SDK de **.NET 10**. La primera vez, `dotnet` descarga solo el paquete NuGet `Microsoft.Data.Sqlite` (§6.2); hace falta conexión a internet en ese momento.
 
 ```bash
 cd HabitLogger        # carpeta que contiene HabitLogger.csproj
